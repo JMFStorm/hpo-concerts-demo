@@ -1,0 +1,43 @@
+{
+  "name": "hki-orchestral",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./dist/index.js",
+    "start:heroku": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./dist/index.js",
+    "watch": "tsc -w",
+    "build:ui": "cd ./src/client-hpo && npm run build && Xcopy /y /s .\\build ..\\..\\dist\\build\\",
+    "copy:package": "copy package.json .\\dist\\",
+    "copy:dist:heroku": "xcopy /y /s .\\dist D:\\projects\\heroku-deploy\\hpo-orchestral-db-heroku",
+    "pre:deploy:heroku": "npm run build:ui && npm run copy:package && npm run copy:dist:heroku",
+    "deploy": "git add . && git commit -m deploy && git push heroku master"
+  },
+  "keywords": [],
+  "author": "Janne Fagerström",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.3",
+    "@types/pg": "^8.6.5",
+    "nodemon": "^2.0.13",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/papaparse": "^5.3.2",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "papaparse": "^5.3.2",
+    "pg": "^8.7.1",
+    "reflect-metadata": "^0.1.13",
+    "socket.io": "^4.5.1",
+    "typeorm": "^0.2.38"
+  }
+}

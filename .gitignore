@@ -1,0 +1,8 @@
+node_modules
+.env
+*.csv
+*.xlsx
+.vscode/
+deploy/
+dist/
+csv/
